@@ -1,10 +1,11 @@
 package business;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import fileCreators.ConcreteReaderCreator;
+import fileCreators.ReaderCreator;
+import fileCreators.ReaderProduct;
 
 public class TeeladenModel {
 
@@ -27,10 +28,11 @@ public class TeeladenModel {
 	
 	// Methoden / Datenverarbeitung	
 	public void leseAusDatei(String typ) throws IOException {
-		BufferedReader ein = new BufferedReader(new FileReader("Teesorte.csv"));
-		String[] zeile = ein.readLine().split(";");
+		ReaderCreator rc = new ConcreteReaderCreator();
+		ReaderProduct rp = rc.factoryMethod(typ);
+		String[] zeile = rp.leseAusDatei();
 		createTeesorte(Integer.parseInt(zeile[0]), zeile[1], zeile[2], zeile[3], zeile[4].split("_"));
-		ein.close();
+		rp.schliesseDatei();
 	}	
 	
 	public void schreibeTeesInCsvDatei() throws IOException {

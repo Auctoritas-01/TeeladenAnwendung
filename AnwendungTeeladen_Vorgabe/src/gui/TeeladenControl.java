@@ -32,12 +32,9 @@ public class TeeladenControl {
 	
 	void leseAusDatei(String typ) {
 		try {
-			if ("csv".equals(typ)) {
 				tm.leseAusDatei(typ);
 				tv.zeigeInformationsfensterAn("Die Teesorte wurde gelesen!");
-			} else {
-				tv.zeigeInformationsfensterAn("Noch nicht implementiert!");
-			}
+
 		} catch (IOException exc) {
 			tv.zeigeFehlermeldungsfensterAn("IOException beim Lesen!");
 		} catch (Exception exc) {

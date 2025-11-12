@@ -1,0 +1,9 @@
+package fileCreators;
+
+import java.io.IOException;
+
+public abstract class ReaderCreator {
+
+	public abstract ReaderProduct factoryMethod(String typ) throws IOException;
+	
+}
